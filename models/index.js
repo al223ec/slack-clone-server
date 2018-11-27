@@ -8,7 +8,9 @@ const config = {
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
   dialect: 'postgres',
-  underscored: true,
+  define: {
+    underscored: true,
+  },
 });
 
 // const env = process.env.NODE_ENV || 'development';
