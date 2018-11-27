@@ -14,7 +14,7 @@ const server = new ApolloServer({
 server.applyMiddleware({ app, path: '/graphql' });
 
 // { force: true } drop database prior to rebuild
-models.sequelize.sync().then(() => {
+models.sequelize.sync({ force: true }).then(() => {
   app.listen({ port: 8000 }, () => {
     console.log('Apollo Server on http://localhost:8000/graphql');
   });

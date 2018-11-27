@@ -10,6 +10,7 @@ slack=# \d
                List of relations
  Schema |      Name       |   Type   |  Owner
 --------+-----------------+----------+----------
+ public | channel_member  | table    | postgres
  public | channels        | table    | postgres
  public | channels_id_seq | sequence | postgres
  public | member          | table    | postgres
@@ -19,7 +20,12 @@ slack=# \d
  public | teams_id_seq    | sequence | postgres
  public | users           | table    | postgres
  public | users_id_seq    | sequence | postgres
-(9 rows)
+(10 rows)
+
+slack=# select * from channel_member;
+ created_at | updated_at | user_id | channel_id
+------------+------------+---------+------------
+(0 rows)
 
 slack=# select * from channels;
  id | name | public | created_at | updated_at | team_id
