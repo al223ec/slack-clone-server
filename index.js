@@ -1,34 +1,17 @@
 import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
+import typeDefs from './schema';
+import resolvers from './resolvers';
 
-const port = 8000;
 const app = express();
 
-const schema = gql`
-  type Query {
-    me: User
-  }
-
-  type User {
-    username: String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    me: () => ({
-      username: 'Robin Wieruch',
-    }),
-  },
-};
-
 const server = new ApolloServer({
-  typeDefs: schema,
+  typeDefs,
   resolvers,
 });
 
 server.applyMiddleware({ app, path: '/graphql' });
 
-app.listen({ port }, () => {
+app.listen({ port: 8000 }, () => {
   console.log('Apollo Server on http://localhost:8000/graphql');
 });
