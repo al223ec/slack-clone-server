@@ -14,6 +14,10 @@ const server = new ApolloServer({
   resolvers,
   context: () => ({
     models,
+    // TODO:: getUser from JWT
+    user: {
+      id: 1,
+    },
   }),
 });
 
